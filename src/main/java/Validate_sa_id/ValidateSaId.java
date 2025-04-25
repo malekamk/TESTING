@@ -4,4 +4,8 @@ package Validate_sa_id;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class ValidateSaId {
 
+    public static boolean isIdNumberValid(String idNumber) {
+        return false;
+    }
+
 }
