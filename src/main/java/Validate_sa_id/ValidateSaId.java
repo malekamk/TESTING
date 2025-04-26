@@ -11,13 +11,15 @@ public class ValidateSaId {
         return false;
 
     }
+
+    //The first 6 digits (YYMMDD) are based on your date of birth.
     public static boolean isDateValid(String date) {
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd")
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuMMdd")
                 .withResolverStyle(ResolverStyle.STRICT);
 
         try{
-            LocalDate localDate = LocalDate.parse(date,formatter);
+            LocalDate.parse(date,formatter);
             return true;
 
         }catch( DateTimeParseException e){
