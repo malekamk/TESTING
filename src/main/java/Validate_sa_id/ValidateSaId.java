@@ -54,23 +54,21 @@ public class ValidateSaId {
         for (int i = 0; i < 12; i++) {
             int number = Character.getNumericValue(idNumber.charAt(i));
             if ((i + 1) % 2 == 0) {
-                evenNumbers.append(number);
+                evenNumbers.append(number); // Even positions
+            } else {
+                odd += number; // Only odd positions are added immediately
             }
-            odd += number;
         }
 
-        int even = Integer.parseInt(evenNumbers.toString()) * 2; // Multiply even numbers all at once
+        int even = Integer.parseInt(evenNumbers.toString()) * 2; // Multiply all evens combined by 2
         int evensum = 0;
 
         for (char i : String.valueOf(even).toCharArray()) {
-            evensum += Character.getNumericValue(i); // Sum digits of the multiplied even numbers
+            evensum += Character.getNumericValue(i); // Sum each digit after multiplication
         }
 
         int total = odd + evensum;
-
-        // Instead of doing (10 - (total % 10)) % 10,
-        // we simplify: if remainder is 0, checksum is 0; else add 1 to remainder
-        int calculatedsum = (total % 10 == 0) ? 0 : (total % 10 + 1);
+        int calculatedsum = (total % 10 == 0) ? 0 : (10 - (total % 10)); // checksum formula
 
         int checkSum = Character.getNumericValue(idNumber.charAt(12));
         return checkSum == calculatedsum;
