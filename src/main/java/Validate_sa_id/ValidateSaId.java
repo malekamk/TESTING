@@ -10,7 +10,10 @@ public class ValidateSaId {
     public static boolean isIdNumberValid(String idNumber) {
         if(idNumber == null || idNumber.length() != 13) return false;
         if(!isOnlyDigit(idNumber)) return false;
+        int citizenship = Character.getNumericValue(idNumber.charAt(10));
+        if (citizenship != 1  && citizenship != 0) return false;
         if (Character.getNumericValue(idNumber.charAt(11)) != 8) return false;
+
 
 
         return true;

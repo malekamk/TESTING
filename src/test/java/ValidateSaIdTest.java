@@ -9,11 +9,11 @@ public class ValidateSaIdTest {
 
 
     @Test
-    void testvalidRacialClass() {
+    void testValidRacialClass() {
         assertTrue(isIdNumberValid("0411035297083"), "8(default) should be available as last second digit");
     }
     @Test
-    void testinvalidRacialClass() {
+    void testInvalidRacialClass() {
         assertFalse(isIdNumberValid("0411035297013"), "8(default) should be available as last second digit");
     }
     @Test
@@ -23,12 +23,20 @@ public class ValidateSaIdTest {
     }
 
     @Test
-    void testvalidLength() {
+    void testCitizenship() {
+        assertTrue(isIdNumberValid("0411035297083"), "Citizenship status must be 0 or 1");
+        assertTrue(isIdNumberValid("0411035297083"), "Citizenship status must be 0 or 1");
+        assertFalse(isIdNumberValid("0411035297983"), "Citizenship status must be 0 or 1");
+
+
+    }
+    @Test
+    void testValidLength() {
         assertTrue(isIdNumberValid("0411035297083"), "ID number should be 13 in length");
     }
 
     @Test
-    void testinvalidCharacter() {
+    void testInvalidCharacter() {
         assertFalse(isIdNumberValid("0411035297083."), "ID contains non digit characters");
         assertFalse(isIdNumberValid("0411A035297083"), "ID contains non digit characters");
     }
@@ -46,7 +54,7 @@ public class ValidateSaIdTest {
 
     }
     @Test
-    void testinvalidGender() {
+    void testInvalidGender() {
         assertFalse(validGender("10000"), "SSSS number should be 0000 to 9999");
     }
 
@@ -66,7 +74,7 @@ public class ValidateSaIdTest {
     }
 
     @Test
-    void testvalidDay() {
+    void testValidDay() {
         assertTrue(isDateValid("241212"), "Day 12 should be valid");
     }
 
