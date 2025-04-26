@@ -20,6 +20,12 @@ public class ValidateSaIdTest {
     }
 
     @Test
+    void testinvalidCharacter() {
+        assertFalse(isIdNumberValid("0411035297083."), "ID contains invalid characters");
+        assertFalse(isIdNumberValid("0411A035297083"), "ID contains invalid characters");
+    }
+
+    @Test
     void testInvalidMonth() {
         assertFalse(isDateValid("241332"), "Month 13 should be invalid");
     }
