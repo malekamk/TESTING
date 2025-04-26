@@ -7,11 +7,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ValidateSaIdTest {
 
 
+    @Test
+    void testValidSaId() {
+        assertTrue(luhnAlgorithm("0411035297083"), "luhn algorithm failed to validate ID");
+        assertFalse(luhnAlgorithm("0411035297082"), "luhn algorithm failed to validate ID");
+    }
 
     @Test
     void testValidRacialClass() {
         assertTrue(isIdNumberValid("0411035297083"), "8(default) should be available as last second digit");
     }
+
     @Test
     void testInvalidRacialClass() {
         assertFalse(isIdNumberValid("0411035297013"), "8(default) should be available as last second digit");
@@ -28,8 +34,8 @@ public class ValidateSaIdTest {
         assertTrue(isIdNumberValid("0411035297083"), "Citizenship status must be 0 or 1");
         assertFalse(isIdNumberValid("0411035297983"), "Citizenship status must be 0 or 1");
 
-
     }
+
     @Test
     void testValidLength() {
         assertTrue(isIdNumberValid("0411035297083"), "ID number should be 13 in length");
