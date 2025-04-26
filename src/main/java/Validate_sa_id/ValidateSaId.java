@@ -10,10 +10,13 @@ public class ValidateSaId {
     public static boolean isIdNumberValid(String idNumber) {
         if(idNumber == null || idNumber.length() != 13) return false;
         if(!isOnlyDigit(idNumber)) return false;
+        if (Character.getNumericValue(idNumber.charAt(11)) != 8) return false;
+
 
         return true;
 
     }
+
 
     public static boolean validGender(String genderNumber) {
         int gender = Integer.parseInt(genderNumber);
@@ -31,7 +34,6 @@ public class ValidateSaId {
         return true;
     }
 
-    //The first 6 digits (YYMMDD) are based on your date of birth.
     public static boolean isDateValid(String date) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuMMdd")

@@ -7,6 +7,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ValidateSaIdTest {
 
 
+
+    @Test
+    void testvalidRacialClass() {
+        assertTrue(isIdNumberValid("0411035297083"), "8(default) should be available as last second digit");
+    }
+    @Test
+    void testinvalidRacialClass() {
+        assertFalse(isIdNumberValid("0411035297013"), "8(default) should be available as last second digit");
+    }
     @Test
     void testInvalidLength() {
         assertFalse(isIdNumberValid("241332"), "ID number too short should be 13");
