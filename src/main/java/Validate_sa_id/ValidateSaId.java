@@ -8,7 +8,8 @@ import java.time.format.ResolverStyle;
 public class ValidateSaId {
 
     public static boolean isIdNumberValid(String idNumber) {
-        return false;
+        if(idNumber == null || idNumber.length() != 13) return false;
+        return true;
 
     }
 
