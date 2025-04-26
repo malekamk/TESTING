@@ -36,7 +36,10 @@ public class ValidateSaIdTest {
         assertTrue(validGender("0000"), "0000 Gender number should be valid");
 
     }
-
+    @Test
+    void testinvalidGender() {
+        assertFalse(validGender("10000"), "SSSS number should be 0000 to 9999");
+    }
 
     @Test
     void testInvalidMonth() {
