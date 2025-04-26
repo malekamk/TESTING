@@ -11,8 +11,7 @@ public class ValidateSaIdTest {
     @Test
     void testInvalidLength() {
         assertFalse(isIdNumberValid("241332"), "ID number too short should be 13");
-        assertFalse(isIdNumberValid("24"), "ID number too short should be 13");
-        assertFalse(isIdNumberValid("241332732564"), "ID number too short should be 13");
+        assertFalse(isIdNumberValid("24133273256487"), "ID number too long should be 13");
     }
 
     @Test
