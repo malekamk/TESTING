@@ -21,8 +21,13 @@ public class ValidateSaIdTest {
 
     @Test
     void testinvalidCharacter() {
-        assertFalse(isIdNumberValid("0411035297083."), "ID contains invalid characters");
-        assertFalse(isIdNumberValid("0411A035297083"), "ID contains invalid characters");
+        assertFalse(isIdNumberValid("0411035297083."), "ID contains non digit characters");
+        assertFalse(isIdNumberValid("0411A035297083"), "ID contains non digit characters");
+    }
+
+    @Test
+    void testvalidCharacter() {
+        assertTrue(isIdNumberValid("0411035297083"), "ID must contains digits only");
     }
 
     @Test
