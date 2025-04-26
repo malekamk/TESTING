@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static Validate_sa_id.ValidateSaId.isDateValid;
-import static Validate_sa_id.ValidateSaId.isIdNumberValid;
+import static Validate_sa_id.ValidateSaId.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -29,6 +28,15 @@ public class ValidateSaIdTest {
     void testvalidCharacter() {
         assertTrue(isIdNumberValid("0411035297083"), "ID must contain digits only");
     }
+
+    @Test
+    void testvalidGender() {
+        assertTrue(validGender("5297"), "5297 Gender number should be valid");
+        assertTrue(validGender("9999"), "9999 Gender number should be valid");
+        assertTrue(validGender("0000"), "0000 Gender number should be valid");
+
+    }
+
 
     @Test
     void testInvalidMonth() {

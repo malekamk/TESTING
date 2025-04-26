@@ -15,6 +15,15 @@ public class ValidateSaId {
 
     }
 
+    public static boolean validGender(String genderNumber) {
+        int gender = Integer.parseInt(genderNumber);
+        if(gender >= 0000 && gender <= 9999 ) {
+            return true;
+        }
+        return false;
+
+    }
+
     public static boolean isOnlyDigit(String idNumber) {
         for(char c : idNumber.toCharArray()){
             if(!Character.isDigit(c)) return false;
