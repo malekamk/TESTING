@@ -9,12 +9,13 @@ public class ValidateSaId {
 
     public static boolean isIdNumberValid(String idNumber) {
         if(idNumber == null || idNumber.length() != 13) return false;
-        if(!isDigit(idNumber)) return false;
+        if(!isOnlyDigit(idNumber)) return false;
+
         return true;
 
     }
 
-    public static boolean isDigit(String idNumber) {
+    public static boolean isOnlyDigit(String idNumber) {
         for(char c : idNumber.toCharArray()){
             if(!Character.isDigit(c)) return false;
         }
