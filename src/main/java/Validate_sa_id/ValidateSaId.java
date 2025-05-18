@@ -13,6 +13,12 @@ import java.time.format.ResolverStyle;
  */
 public class ValidateSaId {
 
+    private static final int ID_LENGTH = 13;
+    private static final int RACE_INDICATOR = 8;
+    private static final int GENDER_THRESHOLD = 5000;
+    private static final int GENDER_MIN = 0;
+    private static final int GENDER_MAX = 9999;
+
     /**
      * Validates the full SA ID number by checking all required conditions.
      *
@@ -23,7 +29,7 @@ public class ValidateSaId {
      * @return true if the ID number is valid, false otherwise
      */
     public static boolean isIdNumberValid(String idNumber) {
-        if (idNumber == null || idNumber.length() != 13) return false;
+        if (idNumber == null || idNumber.length() != ID_LENGTH) return false;
         if (!isOnlyDigit(idNumber)) return false;
         if (!isDateValid(idNumber.substring(0,6))) return false;
         if (!validGender(idNumber.substring(6,10))) return false;
@@ -31,7 +37,7 @@ public class ValidateSaId {
         int citizenship = Character.getNumericValue(idNumber.charAt(10));
         if (citizenship != 1 && citizenship != 0) return false;
 
-        if (Character.getNumericValue(idNumber.charAt(11)) != 8) return false; // We fix to 8 for newer ID standards (race indicator)
+        if (Character.getNumericValue(idNumber.charAt(11)) != RACE_INDICATOR) return false; // We fix to 8 for newer ID standards (race indicator)
 
         if (!luhnAlgorithm(idNumber)) return false; // Validate checksum to detect typing errors
 
@@ -86,7 +92,7 @@ public class ValidateSaId {
      */
     public static boolean validGender(String genderNumber) {
         int gender = Integer.parseInt(genderNumber);
-        if (gender >= 0 && gender <= 9999) {
+        if (gender >= GENDER_MIN && gender <= GENDER_MAX) {
             return true;
         }
         return false;
