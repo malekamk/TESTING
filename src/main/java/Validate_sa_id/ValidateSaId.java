@@ -83,19 +83,17 @@ public class ValidateSaId {
     /**
      * Validates the gender sequence part of the ID number.
      *
-     * Even though gender number could be male/female, we only care
-     * that it falls between 0000 and 9999 because some IDs use
-     * ranges differently.
-     *
      * @param genderNumber the 4-digit sequence number
-     * @return true if valid, false otherwise
+     * @return boolean
      */
-    public static boolean validGender(String genderNumber) {
+    public static boolean isGenderValid(String genderNumber) {
         int gender = Integer.parseInt(genderNumber);
-        if (gender >= GENDER_MIN && gender <= GENDER_MAX) {
-            return true;
-        }
-        return false;
+        return gender >= GENDER_MIN && gender <= GENDER_MAX;
+    }
+
+    public static String getGender(String genderNumber) {
+        int gender = Integer.parseInt(genderNumber);
+        return gender < GENDER_THRESHOLD ? "Female" : "Male";
     }
 
     /**
